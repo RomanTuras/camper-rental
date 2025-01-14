@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
-  --white: #FFFFFF;
-  --inputs: #F7F7F7;
-  --badges: #F2F4F7;
-  --gray-light: #DADDE1;
-  --rating: #FFC531;
-  --button: #E44848;
-  --button-hover: #D84343;
-  --gray: #6C717B;
+  --white: #ffffff;
+  --inputs: #f7f7f7;
+  --badges: #f2f4f7;
+  --gray-light: #dadde1;
+  --rating: #ffc531;
+  --button: #e44848;
+  --button-hover: #d84343;
+  --gray: #6c717b;
   --text: #475467;
   --main: #101828;
 
@@ -54,4 +54,19 @@ li {
 img {
   display: block;
   max-width: 100%;
+}
+
+h1,
+h2 {
+  line-height: 32px;
+  font-weight: 600;
+  color: var(--inputs);
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 32px;
 }
