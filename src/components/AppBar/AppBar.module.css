@@ -1,0 +1,15 @@
+.appBar {
+  width: 100%;
+  background-color: var(--inputs);
+}
+
+.appBarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  height: 72px;
+  max-width: 1440px;
+  padding: 0 64px;
+  margin: 0 auto;
+}
