@@ -1,11 +1,13 @@
-import {Suspense} from "react";
-import AppBar from "../AppBar/AppBar.jsx";
+import { Suspense } from 'react';
+import AppBar from '../AppBar/AppBar.jsx';
 
 const Layout = ({ children }) => {
-    return <div>
-        <AppBar />
-        <Suspense fallback={null}>{children}</Suspense>
+  return (
+    <div>
+      <AppBar />
+      <Suspense fallback={null}>{children}</Suspense>
     </div>
-}
+  );
+};
 
-export default Layout
+export default Layout;
