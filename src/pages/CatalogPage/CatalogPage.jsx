@@ -3,66 +3,66 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchFilteredCampers } from '../../redux/campers/operations.js';
 import { selectCampers } from '../../redux/campers/selectors.js';
 import { changeFilter } from '../../redux/filters/slice.js';
-import { useLocation } from 'react-router-dom';
-import { pageLimit } from '../../constants/constants.js';
-import { toggleFavorite } from '../../redux/favorites/slice.js';
-import { selectFavorites } from '../../redux/favorites/selectors.js';
-import Container from '../../components/Container/Container.jsx';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { pageLimit } from '../../core/constants/filterConstants.js';
+import { convertFilterToParams } from '../../core/utils/convertFilterToParams.js';
+import { AsideContainer } from '../../components/Container/Container.jsx';
+import css from './CatalogPage.module.css';
+import CamperCard from '../../components/CamperCard/CamperCard.jsx';
+import FilterForm from '../../components/FilterForm/FilterForm.jsx';
+import { selectFilter } from '../../redux/filters/selectors.js';
+import { clearCampers } from '../../redux/campers/slice.js';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
-  const [params, setParams] = useState('');
-  const [page, setPage] = useState(1);
-  const [favorites, setFavorites] = useState([]);
-
-  const f = useSelector(selectFavorites);
-
-  //TODO: implement change filter function
-  const hanldeChangeFilter = () => {
-    //TODO: add query params to URL
-    // setParams(`?page=${page}&limit=${pageLimit}`);
-    dispatch(changeFilter(`?page=${page}&limit=${pageLimit}`));
-  };
-
-  //TODO: implement redirect to specific Camper page by ID in query params
-
-  //TODO: implement use memo
-  useEffect(() => {
-    if (location.pathname.endsWith('catalog')) {
-      console.log(location.pathname);
-      dispatch(fetchFilteredCampers(params));
-    }
-  }, [dispatch, location.pathname, params]);
-
-  //TODO: implement pagination
-
-  //TODO: implement add to favorites
-  const handleAddToFavorites = id => {
-    dispatch(toggleFavorite(id));
-    console.log('fav :>> ', f);
-  };
-
+  const filter = useSelector(selectFilter);
   const campers = useSelector(selectCampers);
-  // console.log(campers);
+  const [page, setPage] = useState(1);
+
+  const hanldeApplyFilter = values => {
+    dispatch(clearCampers());
+    setPage(1)
+    dispatch(changeFilter(values));
+  };
+
+  useEffect(() => {
+    const params = convertFilterToParams(filter);
+    dispatch(fetchFilteredCampers(`${params}&page=${page}&limit=${pageLimit}`));
+  }, [dispatch, filter, page]);
+
+  const nextPage = () => {
+    setPage(page + 1);
+  };
+
+  const showCamperDetails = id => {
+    console.log('show camper ' + id);
+  };
 
   return (
-    <>
-      <Container>
-        <button onClick={hanldeChangeFilter}>filter</button>
-        {campers &&
-          campers.items &&
-          campers.items.map(camper => (
-            <div key={camper.id}>
-              {camper.name}{' '}
-              <button onClick={() => handleAddToFavorites(camper.id)}>
-                {' '}
-                fav
-              </button>
-            </div>
-          ))}
-      </Container>
-    </>
+    <AsideContainer>
+      <aside className={css.filtersContainer}>
+        <FilterForm
+          initialFilter={filter}
+          actionApplyFilter={hanldeApplyFilter}
+        />
+      </aside>
+      <main>
+        <ul className={css.cardsHolder}>
+          {campers &&
+            campers.items &&
+            campers.items.map(camper => (
+              <CamperCard
+                key={camper.id}
+                camper={camper}
+                actionCamperDetails={showCamperDetails}
+              />
+            ))}
+        </ul>
+        {campers?.total > pageLimit * page && (
+          <button onClick={nextPage}>More</button>
+        )}
+      </main>
+    </AsideContainer>
   );
 };
 

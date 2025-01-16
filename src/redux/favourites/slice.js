@@ -1,23 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const slice = createSlice({
-  name: 'favorites',
+  name: 'favourites',
   initialState: {
     items: [],
   },
   reducers: {
-    toggleFavorite: (state, action) => {
-      const item = action.payload;
+    toggleFavourite: (state, action) => {
+      const item = Number(action.payload);
       const existingIndex = state.items.indexOf(item);
 
       if (state.items.length == 0 || existingIndex == -1) {
-        state.items.push(item);
+        return { ...state, items: [...state.items, item] };
       } else {
-        state.items.splice(existingIndex, 1);
+        return { ...state, items: state.items.filter(favId => favId !== item) };
       }
     },
   },
 });
 
 export default slice.reducer;
-export const { toggleFavorite } = slice.actions;
+export const { toggleFavourite } = slice.actions;

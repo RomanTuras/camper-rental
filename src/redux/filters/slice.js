@@ -1,9 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const slice = createSlice({
   name: 'filter',
   initialState: {
-    params: {},
+    params: {
+      location: '',
+      equipment: [],
+      form: 'panelTruck',
+    },
   },
   reducers: {
     changeFilter: (state, action) => {

@@ -19,7 +19,7 @@ export const fetchFilteredCampers = createAsyncThunk(
   'campers/fetchFilteredCampers',
   async (params, ThunkAPI) => {
     try {
-      const response = await axios.get(`campers${params}`);
+      const response = await axios.get(`campers?${params}`);
       return response.data;
     } catch (e) {
       ThunkAPI.rejectWithValue(e);

@@ -11,7 +11,7 @@ const HomePage = () => {
 
   return (
     <section className={css.homeSection}>
-      <Container>
+      <Container mt={false}>
         <div className={css.homeContainer}>
           <h1 className={css.title}>Campers of your dreams</h1>
           <h2 className={css.subTitle}>

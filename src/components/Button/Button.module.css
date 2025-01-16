@@ -7,6 +7,7 @@
   line-height: 24px;
   font-weight: 500;
   cursor: pointer;
+  width: fit-content;
 }
 
 .button:hover {
@@ -14,6 +15,7 @@
 }
 
 .accent {
+  padding: 16px 56px;
   background-color: var(--button);
   border: 1px solid var(--button);
   color: var(--white);
