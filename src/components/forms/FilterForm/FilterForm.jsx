@@ -1,18 +1,18 @@
 import { Formik, Form, ErrorMessage, Field } from 'formik';
-import { AccentButton } from '../Button/Button';
+import { AccentButton } from '../../Button/Button';
 import { nanoid } from 'nanoid';
 import * as Yup from 'yup';
 import css from './FilterForm.module.css';
 import {
   camperEquipments,
   camperForms,
-} from '../../core/constants/filterConstants';
+} from '../../../core/constants/filterConstants';
 
 const FilterForm = ({ initialFilter, actionApplyFilter }) => {
 
   const locationId = nanoid();
 
-  const FeedbackSchema = Yup.object().shape({
+  const FilterSchema = Yup.object().shape({
     location: Yup.string().min(3, 'Too Short!').max(50, 'Too Long!'),
   });
 
@@ -24,7 +24,7 @@ const FilterForm = ({ initialFilter, actionApplyFilter }) => {
     <Formik
       initialValues={initialFilter}
       onSubmit={handleSubmit}
-      validationSchema={FeedbackSchema}
+      validationSchema={FilterSchema}
       enableReinitialize
     >
       {({ values, setFieldValue }) => (
