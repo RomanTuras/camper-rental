@@ -9,6 +9,7 @@ import InnerNavigation from '../../components/InnerNavigation/InnerNavigation';
 import ReviewsForm from '../../components/forms/ReviewsForm/ReviewsForm';
 import { MyContext } from '../../components/MyContext/MyContext';
 import { Bounce, ToastContainer, toast } from 'react-toastify';
+import star_yellow from '../../assets/images/star_yellow.svg';
 
 const CamperPage = () => {
   const dispatch = useDispatch();
@@ -41,13 +42,13 @@ const CamperPage = () => {
       <h2 className={css.title}>{camper.name}</h2>
       <div className={css.subtitle}>
         <img
-          src="/src/assets/images/icons/star_yellow.svg"
+          src={star_yellow}
           width={16}
           className={css.ratingIcon}
         />{' '}
         {camper?.rating} ({camper?.reviews?.length} Reviews) {camper?.location}
       </div>
-      <h2 className={css.price}>€{camper.price}.00</h2>
+      <h2 className={css.price}>€{camper.price},00</h2>
       <ul className={css.imageGallery}>
         {camper?.gallery &&
           camper.gallery.map(item => (
