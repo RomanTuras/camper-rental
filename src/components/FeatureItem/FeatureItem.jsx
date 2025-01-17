@@ -1,4 +1,4 @@
-import AC from '/src/assets/images/icons/AC.svg';
+import AC from '../src/assets/images/icons/AC.svg';
 import TV from '/src/assets/images/icons/TV.svg';
 import kitchen from '/src/assets/images/icons/kitchen.svg';
 import automatic from '/src/assets/images/icons/automatic.svg';
