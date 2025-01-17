@@ -6,6 +6,7 @@ const slice = createSlice({
   initialState: {
     data: {
       items: [],
+      item: {},
       total: 0,
     },
     isLoading: false,
@@ -23,7 +24,7 @@ const slice = createSlice({
       state.error = false;
     });
     builder.addCase(fetchCamper.fulfilled, (state, action) => {
-      state.data = action.payload;
+      state.data.item = action.payload;
       state.isLoading = false;
       state.error = false;
     });
@@ -33,6 +34,7 @@ const slice = createSlice({
     });
 
     builder.addCase(fetchFilteredCampers.pending, state => {
+      state.data.item = {},
       state.isLoading = true;
       state.error = false;
     });

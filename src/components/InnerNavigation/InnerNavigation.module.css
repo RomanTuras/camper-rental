@@ -1,0 +1,24 @@
+.innerNav {
+  margin-top: 60px;
+  display: flex;
+  gap: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.link {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+  padding-bottom: 24px;
+  border-bottom: none;
+  color: var(--main);
+}
+
+.link:active {
+  color: var(--main);
+}
+
+.active{
+  border-bottom: 3px solid var(--button);
+}

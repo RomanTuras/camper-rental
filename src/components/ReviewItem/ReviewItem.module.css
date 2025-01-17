@@ -1,0 +1,30 @@
+.reviewItem:not(:first-child) {
+  margin-top: 44px;
+}
+
+.userContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.userAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 24px;
+  line-height: 32;
+  font-weight: 600;
+  color: var(--button);
+  background-color: var(--badges);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.userComment {
+  color: var(--text);
+  font-size: 16px;
+  line-height: 24px;
+}
