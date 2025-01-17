@@ -9,7 +9,7 @@ import InnerNavigation from '../../components/InnerNavigation/InnerNavigation';
 import ReviewsForm from '../../components/forms/ReviewsForm/ReviewsForm';
 import { MyContext } from '../../components/MyContext/MyContext';
 import { Bounce, ToastContainer, toast } from 'react-toastify';
-import star_yellow from '../../assets/images/icons/star_yellow.svg';
+import star_yellow from '../../assets/images/star_yellow.svg';
 
 const CamperPage = () => {
   const dispatch = useDispatch();
