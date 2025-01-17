@@ -1,13 +1,13 @@
-import AC from '../../assets/images/icons/AC.svg';
-import TV from '../../assets/images/icons/TV.svg';
-import kitchen from '../../assets/images/icons/kitchen.svg';
-import automatic from '../../assets/images/icons/automatic.svg';
-import bathroom from '../../assets/images/icons/bathroom.svg';
-import radio from '../../assets/images/icons/radio.svg';
-import refrigerator from '../../assets/images/icons/refrigerator.svg';
-import microwave from '../../assets/images/icons/microwave.svg';
-import gas from '../../assets/images/icons/gas.svg';
-import water from '../../assets/images/icons/water.svg';
+import AC from '../../assets/images/AC.svg';
+import TV from '../../assets/images/TV.svg';
+import kitchen from '../../assets/images/kitchen.svg';
+import automatic from '../../assets/images/automatic.svg';
+import bathroom from '../../assets/images/bathroom.svg';
+import radio from '../../assets/images/radio.svg';
+import refrigerator from '../../assets/images/refrigerator.svg';
+import microwave from '../../assets/images/microwave.svg';
+import gas from '../../assets/images/gas.svg';
+import water from '../../assets/images/water.svg';
 
 const icons = {
   AC,
