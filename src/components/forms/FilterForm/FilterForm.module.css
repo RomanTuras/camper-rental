@@ -2,3 +2,45 @@
   display: flex;
   flex-direction: column;
 }
+
+.locationLabel {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: var(--gray);
+}
+
+.inputWrapper {
+  position: relative;
+  margin-top: 8px;
+}
+.locationInput {
+  width: 360px;
+  padding: 18px 20px 18px 45px;
+  background-color: var(--inputs);
+  border-radius: 12px;
+  border: none;
+}
+
+.locationInput:focus-visible {
+  border: none;
+  outline: none;
+}
+
+.iconInput {
+  position: absolute;
+  left: 20px;
+  top: 18px;
+}
+
+.locationInput:focus + .iconInput svg path {
+  fill: var(--main);
+}
+
+.filtersTitle {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  color: var(--text);
+  margin-top: 40px;
+}

@@ -1,14 +1,5 @@
-.title, .price {
+.title {
   color: var(--dark);
-}
-
-.subtitle {
-  display: flex;
-  align-items: center;
-}
-
-.ratingIcon {
-  display: inline-block;
 }
 
 .imageGallery {

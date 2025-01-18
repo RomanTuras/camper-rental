@@ -7,16 +7,20 @@ import {
   camperEquipments,
   camperForms,
 } from '../../../core/constants/filterConstants';
+import { ReactSVG } from 'react-svg';
+import getIconPath from '../../../core/utils/getIconPath';
+import CheckBoxGroup, { RadioGroup } from '../../SwitchGroup/SwitchGroup';
+import FormSectionTitle from '../FormSectionTitle/FormSectionTitle';
+import SizedBox from '../../SizedBox/SizedBox';
 
 const FilterForm = ({ initialFilter, actionApplyFilter }) => {
-
   const locationId = nanoid();
 
   const FilterSchema = Yup.object().shape({
     location: Yup.string().min(3, 'Too Short!').max(50, 'Too Long!'),
   });
 
-  const handleSubmit = (values) => {
+  const handleSubmit = values => {
     actionApplyFilter?.(values);
   };
 
@@ -29,36 +33,52 @@ const FilterForm = ({ initialFilter, actionApplyFilter }) => {
     >
       {({ values, setFieldValue }) => (
         <Form className={css.filterForm}>
-          <label htmlFor={locationId}>Location</label>
-          <Field type="text" name="location" id={locationId} />
+          <label htmlFor={locationId} className={css.locationLabel}>
+            Location
+          </label>
+          <div className={css.inputWrapper}>
+            <Field
+              type="text"
+              name="location"
+              placeholder="Kyiv, Ukraine"
+              id={locationId}
+              className={css.locationInput}
+            />
+            <ReactSVG
+              src={getIconPath('map')}
+              width={20}
+              height={20}
+              className={css.iconInput}
+            />
+          </div>
+
           <ErrorMessage name="location" component="span" />
 
-          {camperEquipments.map(item => (
-            <label key={item}>
-              <Field
-                type="checkbox"
-                name="equipment"
-                value={item}
-                checked={values.equipment.includes(item)}
-                onChange={() => {
-                  const newValue = values.equipment.includes(item)
-                    ? values.equipment.filter(e => e !== item)
-                    : [...values.equipment, item];
-                  setFieldValue('equipment', newValue);
-                }}
-              />
-              {item}
-            </label>
-          ))}
+          <p className={css.filtersTitle}>Filters</p>
 
-          <Field as="select" name="form">
-            {camperForms.map(item => (
-              <option key={item} value={item}>
-                {item}
-              </option>
-            ))}
-          </Field>
+          <FormSectionTitle className={css.formSectionTitle}>
+            Vehicle equipment
+          </FormSectionTitle>
 
+          <CheckBoxGroup
+            items={camperEquipments}
+            name="equipment"
+            values={values}
+            setFieldValue={setFieldValue}
+          />
+
+          <FormSectionTitle className={css.formSectionTitle}>
+            Vehicle type
+          </FormSectionTitle>
+
+          <RadioGroup
+            items={camperForms}
+            name="form"
+            values={values}
+            setFieldValue={setFieldValue}
+          />
+
+          <SizedBox height={'40px'} />
           <AccentButton type="submit">Search</AccentButton>
         </Form>
       )}

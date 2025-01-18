@@ -1,0 +1,12 @@
+.featureItem {
+  display: flex;
+  gap: 8px;
+  padding: 12px 18px;
+  background-color: var(--badges);
+  border-radius: 100px;
+}
+
+.featureName {
+  font-size: 16px;
+  font-weight: 500;
+}

@@ -1,3 +1,16 @@
 .filtersContainer {
   width: 360px;
 }
+
+.cardsHolder {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.loadMoreContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 52px;
+}

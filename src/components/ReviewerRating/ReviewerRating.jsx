@@ -1,4 +1,5 @@
 import css from './ReviewerRating.module.css';
+import getIconPath from '../../core/utils/getIconPath';
 
 const ReviewerRating = ({ rating }) => {
   const ratingPattern = [0, 0, 0, 0, 0].map((_, index) =>
@@ -6,14 +7,21 @@ const ReviewerRating = ({ rating }) => {
   );
 
   const getStarIconPath = isYellow => {
-    const path = '/src/assets/images/icons/';
-    return isYellow == 1 ? `${path}star_yellow.svg` : `${path}star_grey.svg`;
+    return isYellow == 1
+      ? getIconPath('star_yellow')
+      : getIconPath('star_grey');
   };
 
   return (
     <ul className={css.reviewerRating}>
       {ratingPattern.map((isYellow, index) => (
-        <img key={index} src={getStarIconPath(isYellow)} alt={index} width={16} height={16} />
+        <img
+          key={index}
+          src={getStarIconPath(isYellow)}
+          alt={index}
+          width={16}
+          height={16}
+        />
       ))}
     </ul>
   );
