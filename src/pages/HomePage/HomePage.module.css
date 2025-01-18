@@ -10,6 +10,12 @@
   position: relative;
 }
 
+.title, .subTitle {
+  line-height: 32px;
+  font-weight: 600;
+  color: var(--inputs);
+}
+
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .homeSection {
     background-image: url('../../assets/images/hero/hero-2x.jpg');
