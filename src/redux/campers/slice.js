@@ -10,6 +10,7 @@ const slice = createSlice({
       total: 0,
     },
     isLoading: false,
+    isLoadingMore: false,
     error: null,
   },
   reducers: {
@@ -33,10 +34,13 @@ const slice = createSlice({
       state.error = action.payload;
     });
 
-    builder.addCase(fetchFilteredCampers.pending, state => {
-      state.data.item = {},
-      state.isLoading = true;
-      state.error = false;
+    builder.addCase(fetchFilteredCampers.pending, (state, action) => {
+      if (action.meta.arg.includes('&page=1')) {
+        state.isLoading = true;
+      } else {
+        state.isLoadingMore = true;
+      }
+      (state.data.item = {}), (state.error = false);
     });
     builder.addCase(fetchFilteredCampers.fulfilled, (state, action) => {
       if (action.meta.arg.includes('&page=1')) {
@@ -45,17 +49,18 @@ const slice = createSlice({
         state.data.items.push(...action.payload.items);
       }
       state.data.total = action.payload.total;
-
       state.isLoading = false;
+      state.isLoadingMore = false;
       state.error = false;
     });
     builder.addCase(fetchFilteredCampers.rejected, (state, action) => {
       state.isLoading = false;
+      state.isLoadingMore = false;
       state.error = action.payload;
     });
   },
 });
 
-export const {clearCampers} = slice.actions;
+export const { clearCampers } = slice.actions;
 
 export default slice.reducer;

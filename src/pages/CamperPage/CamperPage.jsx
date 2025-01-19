@@ -16,6 +16,8 @@ import { Bounce, ToastContainer, toast } from 'react-toastify';
 import CamperMicroInfo from '../../components/CamperMicroInfo/CamperMicroInfo';
 import CamperPrice from '../../components/CamperPrice/CamperPrice';
 import SizedBox from '../../components/SizedBox/SizedBox';
+import Loader from '../../components/Loader/Loader';
+import SimpleMessage from '../../components/SimpleMessage/SimpleMessage';
 
 const CamperPage = () => {
   const dispatch = useDispatch();
@@ -48,9 +50,9 @@ const CamperPage = () => {
   return (
     <Container>
       {error ? (
-        <p>Uuups, seems like an error happends...</p>
+        <SimpleMessage error={true}>Ooops, seems like an error happends...</SimpleMessage>
       ) : isLoading ? (
-        <p>...loading</p>
+        <Loader />
       ) : camper ? (
         <>
           <h2 className={css.title}>{camper.name}</h2>

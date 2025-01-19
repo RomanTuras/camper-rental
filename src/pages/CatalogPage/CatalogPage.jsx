@@ -5,6 +5,7 @@ import {
   selectCampers,
   selectCampersError,
   selectCampersIsLoading,
+  selectCampersIsLoadingMore,
 } from '../../redux/campers/selectors.js';
 import { changeFilter } from '../../redux/filters/slice.js';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -17,6 +18,8 @@ import FilterForm from '../../components/forms/FilterForm/FilterForm.jsx';
 import { selectFilter } from '../../redux/filters/selectors.js';
 import { clearCampers } from '../../redux/campers/slice.js';
 import { Button } from '../../components/Button/Button.jsx';
+import Loader from '../../components/Loader/Loader.jsx';
+import SimpleMessage from '../../components/SimpleMessage/SimpleMessage.jsx';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -28,6 +31,7 @@ const CatalogPage = () => {
   const campers = useSelector(selectCampers);
   const error = useSelector(selectCampersError);
   const isLoading = useSelector(selectCampersIsLoading);
+  const isLoadingMore = useSelector(selectCampersIsLoadingMore);
 
   const hanldeApplyFilter = values => {
     dispatch(clearCampers());
@@ -45,7 +49,7 @@ const CatalogPage = () => {
     }
   }, [dispatch, filter, page, location.pathname]);
 
-  useEffect(()=>{
+  useEffect(() => {
     window.scrollTo(0, scrollPosition);
   }, [campers, scrollPosition]);
 
@@ -67,29 +71,32 @@ const CatalogPage = () => {
         />
       </aside>
       <main>
-        {isLoading && <p>loading...</p>}
-
-        {!isLoading && !error && (
-          <ul className={css.cardsHolder}>
-            {campers &&
-              campers.items &&
-              campers.items.map(camper => (
-                <CamperCard
-                  key={camper.id}
-                  camper={camper}
-                  actionCamperDetails={showCamperDetails}
-                />
-              ))}
-          </ul>
-        )}
-
-        <div className={css.loadMoreContainer}>
-          {campers?.total != 0 && campers?.total > pageLimit * page && (
-            <Button action={nextPage}>Load more</Button>
-          )}
-        </div>
-
-        {error && <p>No campers found, try to change out selected filters.</p>}
+        {error ? (
+          <SimpleMessage>No campers found, try to change out selected filters.</SimpleMessage>
+        ) : isLoading ? (
+          <Loader />
+        ) : campers ? (
+          <>
+            <ul className={css.cardsHolder}>
+              {campers &&
+                campers.items &&
+                campers.items.map(camper => (
+                  <CamperCard
+                    key={camper.id}
+                    camper={camper}
+                    actionCamperDetails={showCamperDetails}
+                  />
+                ))}
+            </ul>
+            <div className={css.loadMoreContainer}>
+              {campers?.total != 0 && campers?.total > pageLimit * page && (
+                <>
+                  {isLoadingMore ? <Loader /> : <Button action={nextPage}>Load more</Button>}
+                </>
+              )}
+            </div>
+          </>
+        ) : null}
       </main>
     </AsideContainer>
   );
