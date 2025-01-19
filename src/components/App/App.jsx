@@ -1,16 +1,19 @@
 import { Route, Routes } from 'react-router-dom';
-import HomePage from '../../pages/HomePage/HomePage.jsx';
-import CatalogPage from '../../pages/CatalogPage/CatalogPage.jsx';
-import CamperPage from '../../pages/CamperPage/CamperPage.jsx';
+import { lazy, Suspense } from 'react';
 import Layout from '../Layout/Layout.jsx';
-import ReviewsSection from '../ReviewsSection/ReviewsSection.jsx';
-import FeaturesSection from '../FeaturesSection/FeaturesSection.jsx';
-import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage.jsx';
+
+const HomePage = lazy(()=>import('../../pages/HomePage/HomePage.jsx'));
+const CatalogPage = lazy(()=>import('../../pages/CatalogPage/CatalogPage.jsx'));
+const CamperPage = lazy(()=>import('../../pages/CamperPage/CamperPage.jsx'));
+const ReviewsSection = lazy(()=>import('../ReviewsSection/ReviewsSection.jsx'));
+const FeaturesSection = lazy(()=>import('../FeaturesSection/FeaturesSection.jsx'));
+const NotFoundPage = lazy(()=>import('../../pages/NotFoundPage/NotFoundPage.jsx'));
 
 function App() {
   return (
     <>
       <Layout>
+        <Suspense>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<CatalogPage />} />
@@ -20,6 +23,7 @@ function App() {
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        </Suspense>
       </Layout>
     </>
   );
