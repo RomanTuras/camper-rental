@@ -2,6 +2,9 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import css from './ReviewsForm.module.css';
 import { AccentButton } from '../../Button/Button';
+// import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+// import { useState } from 'react';
 
 const ReviewsForm = ({submitReview}) => {
   const initialValues = {
@@ -31,6 +34,8 @@ const ReviewsForm = ({submitReview}) => {
     resetForm();
   };
 
+  // const [startDate, setStartDate] = useState('');
+
   return (
     <>
       <Formik
@@ -40,15 +45,17 @@ const ReviewsForm = ({submitReview}) => {
       >
         <Form className={css.reviewsForm}>
           <Field type="text" name="name" placeholder="Name*" />
-          <ErrorMessage name="name" />
+          <ErrorMessage name="name" component="span" />
 
           <Field type="email" name="email" placeholder="Email*" />
-          <ErrorMessage name="email" />
+          <ErrorMessage name="email" component="span" />
 
           <Field type="text" name="bookingDate" placeholder="Booking date*" onFocus={(e) => (e.target.type = "date")} onBlur={(e) => (e.target.type = "text")}/>
-          <ErrorMessage name="bookingDate" />
+          {/* <DatePicker name="bookingDate" selected={startDate} onChange={(date) => setStartDate(date)} placeholderText='Booking date*' /> */}
+          <ErrorMessage name="bookingDate" component="span" />
 
-          <Field as="textarea" name="comment" placeholder="Comment*" />
+
+          <Field as="textarea" name="comment" placeholder="Comment*" className={css.reviewComment} />
           <AccentButton type="submit">Send</AccentButton>
         </Form>
       </Formik>
