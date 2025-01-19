@@ -16,6 +16,7 @@ import star_yellow from '../../assets/images/star_yellow.svg';
 import star_grey from '../../assets/images/star_grey.svg';
 import map from '../../assets/images/map.svg';
 import heart from '../../assets/images/heart.svg';
+import engine from '../../assets/images/engine.svg';
 import heart_selected from '../../assets/images/heart_selected.svg';
 
 const icons = {
@@ -38,10 +39,23 @@ const icons = {
   alcove,
   heart,
   heart_selected,
+  engine,
 };
 
 const getIconPath = name => {
-  return icons[name] || water;
+  switch (name) {
+    case 'manual':
+      return icons['automatic'];
+    case 'diesel':
+      return icons['engine'];
+    case 'petrol':
+      return icons['engine'];
+    case 'hybrid':
+      return icons['engine'];
+
+    default:
+      return icons[name] || radio;
+  }
 };
 
 export default getIconPath;

@@ -5,5 +5,14 @@ export const camperEquipments = [
   'automatic',
   'TV',
   'bathroom',
+  'manual',
+  'diesel',
+  'petrol',
+  'hybrid',
+  'gas',
+  'radio',
+  'refrigerator',
+  'microwave',
+  'water',
 ];
 export const camperForms = ['panelTruck', 'fullyIntegrated', 'alcove'];

@@ -4,12 +4,13 @@ class CamperDetails {
     'TV',
     'bathroom',
     'kitchen',
-    // 'radio',
     'refrigerator',
-    // 'microwave',
-    // 'gas',
-    // 'water',
     'transmission',
+    'engine',
+    'radio',
+    'microwave',
+    'gas',
+    'water',
   ];
 
   detailsList = ['form', 'length', 'width', 'height', 'tank', 'consumption'];
@@ -25,7 +26,22 @@ class CamperDetails {
   #initLists = () => {
     for (const [key, value] of Object.entries(this.camper)) {
       if (this.featuresList.includes(key)) {
-        this.#camperFeatures.push(key === 'transmission' ? value : key);
+        let item = key;
+        switch (key) {
+          case 'transmission':
+            item = value;
+            break;
+          case 'engine':
+            item = value;
+            break;
+          case 'petrol':
+            item = value;
+            break;
+          case 'hybrid':
+            item = value;
+            break;
+        }
+        this.#camperFeatures.push(item);
       }
 
       if (this.detailsList.includes(key)) {

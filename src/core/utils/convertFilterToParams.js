@@ -2,7 +2,21 @@ export const convertFilterToParams = filter => {
   const { location, equipment, form } = filter;
   const equipmentValues = equipment
     .map(item => {
-      return item == "automatic" ? "transmission=automatic" : `${encodeURIComponent(item)}=true`;
+      switch (item) {
+        case 'automatic':
+          return 'transmission=automatic';
+        case 'manual':
+          return 'transmission=manual';
+        case 'diesel':
+          return 'engine=diesel';
+        case 'petrol':
+          return 'engine=petrol';
+        case 'hybrid':
+          return 'engine=hybrid';
+
+        default:
+          return `${encodeURIComponent(item)}=true`;
+      }
     })
     .join('&');
 
