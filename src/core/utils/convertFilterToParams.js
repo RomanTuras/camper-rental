@@ -1,7 +1,9 @@
 export const convertFilterToParams = filter => {
   const { location, equipment, form } = filter;
   const equipmentValues = equipment
-    .map(item => `${encodeURIComponent(item)}=true`)
+    .map(item => {
+      return item == "automatic" ? "transmission=automatic" : `${encodeURIComponent(item)}=true`;
+    })
     .join('&');
 
   let params = location ? `location=${encodeURIComponent(location)}&` : '';
