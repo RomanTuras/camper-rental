@@ -5,6 +5,7 @@ import CamperPage from '../../pages/CamperPage/CamperPage.jsx';
 import Layout from '../Layout/Layout.jsx';
 import ReviewsSection from '../ReviewsSection/ReviewsSection.jsx';
 import FeaturesSection from '../FeaturesSection/FeaturesSection.jsx';
+import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage.jsx';
 
 function App() {
   return (
@@ -17,9 +18,7 @@ function App() {
             <Route path='features' element={<FeaturesSection />} />
             <Route path='reviews' element={<ReviewsSection />} />
           </Route>
-
-          {/* <Route path="/catalog/:id" element={<CamperPage />} /> */}
-          {/* <Route path="*" element={ <NotFoundPage /> } /> */}
+          <Route path="*" element={ <NotFoundPage /> } />
         </Routes>
       </Layout>
     </>

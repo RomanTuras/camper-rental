@@ -1,0 +1,10 @@
+.title {
+  font-size: 70px;
+  color: var(--button);
+}
+
+.link {
+  display: block;
+  font-weight: 600;
+  margin-top: 30px;
+}
