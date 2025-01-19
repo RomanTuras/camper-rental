@@ -4,12 +4,12 @@ import getIconPath from '../../core/utils/getIconPath';
 
 const AppBar = () => {
   return (
-    <section className={css.appBar}>
+    <header className={css.appBar}>
       <div className={css.appBarContainer}>
         <img src={getIconPath('logo')} alt="Campers rental" width={136} />
         <Navigation />
       </div>
-    </section>
+    </header>
   );
 };
 export default AppBar;
