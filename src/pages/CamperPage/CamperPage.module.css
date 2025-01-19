@@ -5,6 +5,21 @@
 .imageGallery {
   display: flex;
   flex-wrap: no-wrap;
+  gap: 48px;
+  margin-top: 28px;
+}
+
+.image {
+  width: 292px;
+  height: 312px;
+  object-fit: cover;
+  object-position: left;
+  border-radius: 10px;
+}
+
+.description {
+  color: var(--text);
+  margin-top: 28px;
 }
 
 .aboutSection {
@@ -19,4 +34,9 @@
   border: 1px solid var(--gray-light);
   border-radius: 10px;
   padding: 44px 52px;
+}
+
+.formSubtitle {
+  color: var(--gray);
+  margin-top: 8px;
 }

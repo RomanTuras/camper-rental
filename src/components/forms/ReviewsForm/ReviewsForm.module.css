@@ -2,6 +2,27 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  /* width: 527px; */
-  margin: 0 auto;
+  margin: 24px auto 0 auto;
+}
+
+.reviewComment {
+  height: 118px;
+}
+
+.reviewsForm input,
+.reviewsForm textarea {
+  background-color: var(--inputs);
+  border: none;
+  border-radius: 12px;
+  padding: 18px;
+  width: 100%;
+}
+
+.reviewsForm input:focus-visible,
+.reviewsForm textarea:focus-visible {
+  outline: none;
+}
+
+.reviewsForm > span {
+  color: var(--button);
 }

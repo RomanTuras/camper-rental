@@ -16,3 +16,16 @@
   border-bottom: 1px solid var(--gray-light);
   padding-bottom: 24px;
 }
+
+.detailsList {
+  margin-top: 24px;
+}
+
+.detailItem {
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+.detailItem:not(:first-child) {
+  margin-top: 16px;
+}
