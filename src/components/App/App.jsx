@@ -14,11 +14,11 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/catalog/:id" element={<CamperPage />} >
-            <Route path='features' element={<FeaturesSection />} />
-            <Route path='reviews' element={<ReviewsSection />} />
+          <Route path="/catalog/:id" element={<CamperPage />}>
+            <Route path="features" element={<FeaturesSection />} />
+            <Route path="reviews" element={<ReviewsSection />} />
           </Route>
-          <Route path="*" element={ <NotFoundPage /> } />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Layout>
     </>

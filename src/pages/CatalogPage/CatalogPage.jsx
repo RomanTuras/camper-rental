@@ -72,7 +72,9 @@ const CatalogPage = () => {
       </aside>
       <main>
         {error ? (
-          <SimpleMessage>No campers found, try to change out selected filters.</SimpleMessage>
+          <SimpleMessage>
+            No campers found, try to change out selected filters.
+          </SimpleMessage>
         ) : isLoading ? (
           <Loader />
         ) : campers ? (
@@ -91,7 +93,11 @@ const CatalogPage = () => {
             <div className={css.loadMoreContainer}>
               {campers?.total != 0 && campers?.total > pageLimit * page && (
                 <>
-                  {isLoadingMore ? <Loader /> : <Button action={nextPage}>Load more</Button>}
+                  {isLoadingMore ? (
+                    <Loader />
+                  ) : (
+                    <Button action={nextPage}>Load more</Button>
+                  )}
                 </>
               )}
             </div>

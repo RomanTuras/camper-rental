@@ -36,12 +36,11 @@ class CamperDetails {
 
   getAvailableDetails() {
     return this.#camperDetails;
-  };
+  }
 
   getAvailableFeatures() {
     return this.#camperFeatures;
-  };
-
+  }
 }
 
 export default CamperDetails;

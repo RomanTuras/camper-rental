@@ -26,5 +26,4 @@ To create a production build, use:
 
 `npm build`
 
-
 ![Image](https://github.com/user-attachments/assets/4377e8ee-18b4-42d7-8165-39b482cc5235)
