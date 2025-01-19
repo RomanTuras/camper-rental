@@ -10,7 +10,8 @@
   position: relative;
 }
 
-.title, .subTitle {
+.title,
+.subTitle {
   line-height: 32px;
   font-weight: 600;
   color: var(--inputs);
@@ -29,8 +30,7 @@
 }
 
 @supports (
-  background-image:
-    image-set(
+  background-image: image-set(
       url('../../assets/images/hero/hero.webp') 1x,
       url('../../assets/images/hero/hero-2x.webp') 2x,
       url('../../assets/images/hero/hero-4x.webp') 4x

@@ -12,7 +12,12 @@ const CamperMicroInfo = ({ camper }) => {
       <span className={css.rating}>
         {camper?.rating}({camper?.reviews?.length}Reviews)
       </span>
-      <img src={getIconPath('map')} width={16} height={16} className={css.locationIcon} />
+      <img
+        src={getIconPath('map')}
+        width={16}
+        height={16}
+        className={css.locationIcon}
+      />
       <span>{camper?.location}</span>
     </div>
   );

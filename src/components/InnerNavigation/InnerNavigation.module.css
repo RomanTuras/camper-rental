@@ -19,6 +19,6 @@
   color: var(--main);
 }
 
-.active{
+.active {
   border-bottom: 3px solid var(--button);
 }

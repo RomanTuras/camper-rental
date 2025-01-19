@@ -1,7 +1,12 @@
 import clsx from 'clsx';
 import css from './Button.module.css';
 
-export const Button = ({ isAccent = false, action, type = 'button', children }) => {
+export const Button = ({
+  isAccent = false,
+  action,
+  type = 'button',
+  children,
+}) => {
   const buildButtonClass = () => {
     return clsx(css.button, isAccent && css.accent);
   };
@@ -13,7 +18,7 @@ export const Button = ({ isAccent = false, action, type = 'button', children }) 
   };
 
   return (
-    <button onClick={handleClick} type = {type} className={buildButtonClass()}>
+    <button onClick={handleClick} type={type} className={buildButtonClass()}>
       {children}
     </button>
   );
@@ -21,7 +26,7 @@ export const Button = ({ isAccent = false, action, type = 'button', children }) 
 
 export const AccentButton = ({ action, type = 'button', children }) => {
   return (
-    <Button isAccent={true} action={action} type = {type}>
+    <Button isAccent={true} action={action} type={type}>
       {children}
     </Button>
   );

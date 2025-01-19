@@ -50,7 +50,9 @@ const CamperPage = () => {
   return (
     <Container>
       {error ? (
-        <SimpleMessage error={true}>Ooops, seems like an error happends...</SimpleMessage>
+        <SimpleMessage error={true}>
+          Ooops, seems like an error happends...
+        </SimpleMessage>
       ) : isLoading ? (
         <Loader />
       ) : camper ? (
